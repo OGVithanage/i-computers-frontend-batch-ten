@@ -62,7 +62,7 @@ export default function AdminAddProductPage(){
             )
 
             toast.success("Product added sucessfully!");
-            navigate("admin/products")
+            navigate("/admin/products")
         }catch(error){
             console.log(error)
             console.log(error?.response)
