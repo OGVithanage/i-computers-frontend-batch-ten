@@ -19,6 +19,7 @@ export default function AdminEditProductPage(){
     const [category, setCategory] = useState(location.state?.category || "")
     const [isAvailable, setisAvailable] = useState(location.state?.isAvailable || "")
     const [stock, setStock] = useState(location.state?.stock || "")
+    const [isUpdating, setIsUpdating] = useState(false);
 
     useEffect(
         ()=>{
@@ -86,7 +87,7 @@ export default function AdminEditProductPage(){
             <div className="sticky top-0 w-full h-[100px] rounded-lg bg-accent text-white flex items-center justify-between p-5 shadow-2xl">
                 <h1 className="text-2xl font-semibold">Edit Product</h1>
                 <div className="h-full flex items-center justify-center">
-                    <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer">Save</button>
+                    <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer" disabled={isUpdating}>Update</button>
                     <button className="ml-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 cursor-pointer">Cancel</button>
                 </div>
             </div>
