@@ -13,10 +13,10 @@ function App() {
     <div className='w-full h-screen flex justify-center items-center relative bg-primary text-secondary'>
       <Toaster />
       <Routes>
-        <Route path="/" element={<HomePage />} />
         <Route path="/admin/*" element={<AdminPage />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/*" element={<HomePage />} />
       </Routes>
     </div>
   )

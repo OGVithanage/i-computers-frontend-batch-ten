@@ -1,5 +1,40 @@
-export default function ProductPage(){
+import axios from "axios";
+import { useEffect, useState } from "react"
+import ProductCard from "./productCard";
+
+export default function ProductsPage(){
+    const [products, setProducts] = useState([]);
+    const [isProductsAreLoaded, setIsProductsAreLoaded] = useState(false);
+
+    useEffect(
+        () => {
+            if(!isProductsAreLoaded) {
+                axios.get(import.meta.env.VITE_API_URL + "/products").then(
+                    (response) => {
+                        setProducts(response.data);
+                        setIsProductsAreLoaded(true);
+                    }
+                ).catch(
+                    (error) => {
+                        console.log(error);
+                    }
+                );
+            }
+        }
+        ,[isProductsAreLoaded]
+    );
+
     return(
-        <h1>ProductPage</h1>
+        <div className="w-full h-full flex justify-center flex-wrap">
+            {
+                products.map(
+                    (item) => {
+                        return(
+                            <ProductCard key={item.productId} product={item} />
+                        )
+                    }
+                )
+            }
+        </div>
     )
 }

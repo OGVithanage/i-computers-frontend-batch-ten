@@ -65,7 +65,11 @@ export default function AdminEditProductPage(){
                 stock: stock
             }
 
-            await axios.post(import.meta.env.VITE_API_URL+"/products", productData,
+            if(urls.length == 0) {
+                productData.images = location.state.images;
+            }
+
+            await axios.post(import.meta.env.VITE_API_URL+"/products/"+productId, productData,
                 {
                     headers: {
                         "Authorization": "Bearer "+token
@@ -87,7 +91,7 @@ export default function AdminEditProductPage(){
             <div className="sticky top-0 w-full h-[100px] rounded-lg bg-accent text-white flex items-center justify-between p-5 shadow-2xl">
                 <h1 className="text-2xl font-semibold">Edit Product</h1>
                 <div className="h-full flex items-center justify-center">
-                    <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer" disabled={isUpdating}>Update</button>
+                    <button onClick={handleSave} className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 cursor-pointer" disabled={isUpdating}>{isUpdating?"Updating...":"Update"}</button>
                     <button className="ml-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 cursor-pointer">Cancel</button>
                 </div>
             </div>
@@ -96,6 +100,7 @@ export default function AdminEditProductPage(){
                     <label className="block mb-2 font-semibold">Product ID</label>
                     <input className="border border-gray-300 rounded-md p-2 w-full"
                         value={productId}
+                        disabled={true}
                         onChange={(e)=>setProductId(e.target.value)}
                     />
                 </div>
