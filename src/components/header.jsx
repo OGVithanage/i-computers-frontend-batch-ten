@@ -1,7 +1,7 @@
 import { BiCart } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-export default function Header(){
+export default function Header(){ 
     return(
         <header className="w-full h-[100px] bg-accent relative flex items-center justify-center shrink-0">
             <Link to="/" className="w-[200px] h-full  absolute left-10 flex justify-center items-center">

@@ -69,7 +69,7 @@ export default function AdminEditProductPage(){
                 productData.images = location.state.images;
             }
 
-            await axios.post(import.meta.env.VITE_API_URL+"/products/"+productId, productData,
+            await axios.put(import.meta.env.VITE_API_URL+"/products/"+productId, productData,
                 {
                     headers: {
                         "Authorization": "Bearer "+token
@@ -77,7 +77,7 @@ export default function AdminEditProductPage(){
                 }
             )
 
-            toast.success("Product added sucessfully!");
+            toast.success("Product updated sucessfully!");
             navigate("/admin/products")
         }catch(error){
             console.log(error)

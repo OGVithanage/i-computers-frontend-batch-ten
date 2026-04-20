@@ -18,7 +18,7 @@ export default function LoginPage() {
             password : password
         }).then((response)=>{
             console.log("Login successful: ", response.data.token);
-            localStorage.setItem("token", response.data.token)
+            localStorage.setItem("token", response.data.token);
 
             if(response.data.isAdmin){
                 //redirect to admin dashboard
