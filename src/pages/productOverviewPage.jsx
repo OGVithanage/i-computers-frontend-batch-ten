@@ -88,7 +88,20 @@ export default function ProductOverviewPage() {
                             </p>
                             <div className="flex mt-5 gap-5">
                                 <button className="w-62.5 h-16 bg-green-500 text-white font-xl text-semibold rounded-lg cursor-pointer hover:bg-green-700 transition-colors duration-300" onClick={()=>{addToCart(product, 1)}}>Add to Cart</button>
-                                <button className="w-62.5 h-16 bg-blue-500 text-white font-xl text-semibold rounded-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300" onClick={()=>{console.log(getCart())}}>But Now</button>
+                                <Link className="w-62.5 h-16 bg-blue-500 text-white font-xl text-semibold rounded-lg cursor-pointer hover:bg-blue-700 transition-colors duration-300 flex justify-center items-center" to="/checkout" state={
+                                    [
+                                        {
+                                            product: {
+                                                productId: product.productId,
+                                                name: product.name,
+                                                image: product.images[0],
+                                                labelledPrice: product.labelledPrice,
+                                                price: product.price,
+                                            },
+                                            quantity: 1
+                                        }
+                                    ]
+                                }>But Now</Link>
                             </div>
                         </div>
                     </div>
